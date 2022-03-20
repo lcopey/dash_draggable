@@ -24,23 +24,38 @@ export default class DashDraggable extends Component {
         ) {
         return;
         }
+        let sourceColumn, destinationColumn, sourceNewTaskIds, destinationNewTaskIds;
+        if (source.droppableId === destination.droppableId) {
+            sourceColumn = destinationColumn = this.props.columns[source.droppableId];
+            sourceNewTaskIds = destinationNewTaskIds = Array.from(sourceColumn.taskIds);
+        }
+        else {
+            sourceColumn = this.props.columns[source.droppableId];
+            destinationColumn = this.props.columns[destination.droppableId];
 
-        const column = this.props.columns[source.droppableId];
-        const newTaskIds = Array.from(column.taskIds);
-        newTaskIds.splice(source.index, 1);
-        newTaskIds.splice(destination.index, 0, draggableId);
+            sourceNewTaskIds = Array.from(sourceColumn.taskIds);
+            destinationNewTaskIds = Array.from(destinationColumn.taskIds);
+        }
+        
+        sourceNewTaskIds.splice(source.index, 1);
+        destinationNewTaskIds.splice(destination.index, 0, draggableId);
 
-        const newColumn = {
-        ...column,
-        taskIds: newTaskIds
+        const newSourceColumn = {
+            ...sourceColumn,
+            taskIds: sourceNewTaskIds
+        };
+        const newDestinationColumn = {
+            ...destinationColumn,
+            taskIds: destinationNewTaskIds
         };
 
         const newProps = {
-        ...this.props,
-        columns: {...
-            this.props.columns,
-            [newColumn.id]: newColumn
-        }
+            ...this.props,
+            columns: {...
+                this.props.columns,
+                [newSourceColumn.id]: newSourceColumn,
+                [destinationColumn.id]: newDestinationColumn
+            }
         };
         this.props.setProps(newProps);
 
