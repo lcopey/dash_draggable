@@ -16,7 +16,7 @@ app.layout = html.Div([
         #     'task-2': {'id': 'task-2', 'content': 'Watch my favorite show'},
         #     'task-3': {'id': 'task-3', 'content': 'Charge my phone'},
         # },
-        columns={'column-1': {'title': 'Done', 'taskIds': ['task-1', 'task-2']},
+        columns={'column-1': {'taskIds': ['task-1', 'task-2']},
                  'column-2': {'title': 'To Do', 'taskIds': ['task-3']}
                  },
         # columns={

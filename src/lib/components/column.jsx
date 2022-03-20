@@ -20,10 +20,17 @@ const TaskList = styled.div`
 
 export default class Column extends Component {
     render() {
+        let title;
+        if (this.props.column.title) {
+            title = <Title>{this.props.column.title}</Title>
+        }
+        else {
+            title = '';
+        }
+
         return (
         <Container>
-            <Title>{this.props.column.title}</Title>
-            
+            {title}
             {/* Droppable needs to have its children as a function
             So everything is wrapped into a function taking provided as parameters and returns our DOM Component */}
             <Droppable droppableId={this.props.column.id}>

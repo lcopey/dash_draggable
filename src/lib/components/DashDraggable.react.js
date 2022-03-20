@@ -71,11 +71,11 @@ export default class DashDraggable extends Component {
         // document.body.style.transition = `background-color 0.2s ease`;
       }
     
-      onDragUpdate = update => {
-        // const { destination } = update;
-        // const opacity = destination ? destination.index / Object.keys(this.state.tasks).length : 0;
-        // document.body.style.backgroundColor = `rgba(153, 141, 217, ${opacity})`;
-      }
+    onDragUpdate = update => {
+    // const { destination } = update;
+    // const opacity = destination ? destination.index / Object.keys(this.state.tasks).length : 0;
+    // document.body.style.backgroundColor = `rgba(153, 141, 217, ${opacity})`;
+    }
 
     render() {
         const {id, tasks, columns, columnOrder, setProps} = this.props;
