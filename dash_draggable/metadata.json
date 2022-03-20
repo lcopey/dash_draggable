@@ -35,7 +35,12 @@
         "name": "onDragEnd",
         "docblock": null,
         "modifiers": [],
-        "params": [],
+        "params": [
+          {
+            "name": "result",
+            "type": null
+          }
+        ],
         "returns": null
       },
       {
