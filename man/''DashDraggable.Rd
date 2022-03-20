@@ -10,15 +10,17 @@ ExampleComponent is an example component. It takes a property, `label`, and di
 }
 
 \usage{
-''DashDraggable(id=NULL, label=NULL, value=NULL)
+''DashDraggable(id=NULL, columnOrder=NULL, columns=NULL, tasks=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{label}{Character. A label that will be printed when this component is rendered.}
+\item{columnOrder}{Unnamed list. }
 
-\item{value}{Character. The value displayed in the input.}
+\item{columns}{Named list. }
+
+\item{tasks}{Named list. }
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

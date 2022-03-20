@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {DragDropContext} from 'react-beautiful-dnd';
+import Column from './column.jsx';
 
 /**
  * ExampleComponent is an example component.
@@ -9,27 +11,38 @@ import PropTypes from 'prop-types';
  * which is editable by the user.
  */
 export default class DashDraggable extends Component {
+    onDragEnd = () => {
+
+    };
+    onDragStart = () => {
+        // document.body.style.color = 'orange';
+        // document.body.style.transition = `background-color 0.2s ease`;
+      }
+    
+      onDragUpdate = update => {
+        // const { destination } = update;
+        // const opacity = destination ? destination.index / Object.keys(this.state.tasks).length : 0;
+        // document.body.style.backgroundColor = `rgba(153, 141, 217, ${opacity})`;
+      }
+
     render() {
-        const {id, label, setProps, value} = this.props;
+        const {id, tasks, columns, columnOrder, setProps} = this.props;
 
         return (
             <div id={id}>
-                ExampleComponent: {label}&nbsp;
-                <input
-                    value={value}
-                    onChange={
-                        /*
-                         * Send the new value to the parent component.
-                         * setProps is a prop that is automatically supplied
-                         * by dash's front-end ("dash-renderer").
-                         * In a Dash app, this will update the component's
-                         * props and send the data back to the Python Dash
-                         * app server if a callback uses the modified prop as
-                         * Input or State.
-                         */
-                        e => setProps({ value: e.target.value })
+                <DragDropContext
+                onDragStart={this.onDragStart}
+                onDragUpdate={this.onDragUpdate}
+                onDragEnd={this.onDragEnd}>
+                    {
+                        columnOrder.map(columnId => {
+                            const column = columns[columnId];
+                            const columnTasks = column.taskIds.map((taskId => tasks[taskId]));
+                            return <Column key={column.id} column={column} tasks={columnTasks}/>
+                        })
                     }
-                />
+                </DragDropContext>
+
             </div>
         );
     }
@@ -42,16 +55,9 @@ DashDraggable.propTypes = {
      * The ID used to identify this component in Dash callbacks.
      */
     id: PropTypes.string,
-
-    /**
-     * A label that will be printed when this component is rendered.
-     */
-    label: PropTypes.string.isRequired,
-
-    /**
-     * The value displayed in the input.
-     */
-    value: PropTypes.string,
+    tasks: PropTypes.object,
+    columns: PropTypes.object,
+    columnOrder: PropTypes.array,
 
     /**
      * Dash-assigned callback that should be called to report property changes

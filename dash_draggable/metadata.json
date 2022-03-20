@@ -1,8 +1,63 @@
 {
+  "src/lib/components/column.jsx": {
+    "description": "",
+    "displayName": "Column",
+    "methods": [],
+    "props": {
+      "tasks": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "column": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
   "src/lib/components/DashDraggable.react.js": {
     "description": "ExampleComponent is an example component.\r\nIt takes a property, `label`, and\r\ndisplays it.\r\nIt renders an input with the property `value`\r\nwhich is editable by the user.",
     "displayName": "DashDraggable",
-    "methods": [],
+    "methods": [
+      {
+        "name": "onDragEnd",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "onDragStart",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "onDragUpdate",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "update",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
     "props": {
       "id": {
         "type": {
@@ -11,19 +66,54 @@
         "required": false,
         "description": "The ID used to identify this component in Dash callbacks."
       },
-      "label": {
+      "tasks": {
         "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": "A label that will be printed when this component is rendered."
-      },
-      "value": {
-        "type": {
-          "name": "string"
+          "name": "object"
         },
         "required": false,
-        "description": "The value displayed in the input."
+        "description": ""
+      },
+      "columns": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": ""
+      },
+      "columnOrder": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      }
+    }
+  },
+  "src/lib/components/task.jsx": {
+    "description": "",
+    "displayName": "Task",
+    "methods": [],
+    "props": {
+      "task": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "index": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
       },
       "setProps": {
         "type": {

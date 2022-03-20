@@ -5,7 +5,9 @@ using Dash
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "0.0.1"
 
+include("jl/''_column.jl")
 include("jl/''_dashdraggable.jl")
+include("jl/''_task.jl")
 
 function __init__()
     DashBase.register_package(

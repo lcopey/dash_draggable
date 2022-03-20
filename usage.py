@@ -8,14 +8,25 @@ app = dash.Dash(__name__)
 app.layout = html.Div([
     dash_draggable.DashDraggable(
         id='input',
-        value='my-value',
-        label='my-label'
+        tasks={
+            'task-1': {'id': 'task-1', 'content': 'Take out the garbage'},
+            'task-2': {'id': 'task-2', 'content': 'Watch my favorite show'},
+            'task-3': {'id': 'task-3', 'content': 'Charge my phone'},
+        },
+        columns={
+            'column-1': {
+                'id': 'column-1',
+                'title': 'To do',
+                'taskIds': ['task-1', 'task-2', 'task-3']
+            }
+        },
+    columnOrder=['column-1'],
     ),
     html.Div(id='output')
 ])
 
 
-@app.callback(Output('output', 'children'), [Input('input', 'value')])
+@app.callback(Output('output', 'children'), [Input('input', 'columns')])
 def display_output(value):
     return 'You have entered {}'.format(value)
 
