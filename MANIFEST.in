@@ -1,0 +1,11 @@
+include dash_draggable/dash_draggable.min.js
+include dash_draggable/dash_draggable.min.js.map
+include dash_draggable/async-*.js
+include dash_draggable/async-*.js.map
+include dash_draggable/*-shared.js
+include dash_draggable/*-shared.js.map
+include dash_draggable/metadata.json
+include dash_draggable/package-info.json
+include README.md
+include LICENSE
+include package.json

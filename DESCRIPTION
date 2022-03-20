@@ -1,0 +1,13 @@
+Package: dashDraggable
+Title: dash draggable list
+Version: 0.0.1
+Description: dash draggable list
+Depends: R (>= 3.0.2)
+Imports: 
+Suggests: 
+License: MIT + file LICENSE
+URL: https://github.com/lcopey/dash-draggable
+BugReports: https://github.com/lcopey/dash-draggable/issues
+Encoding: UTF-8
+LazyData: true
+KeepSource: true
