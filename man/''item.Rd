@@ -10,10 +10,12 @@
 }
 
 \usage{
-''item(index=NULL, item=NULL, showHandle=NULL)
+''item(handleText=NULL, index=NULL, item=NULL, showHandle=NULL)
 }
 
 \arguments{
+\item{handleText}{Character. }
+
 \item{index}{Numeric. }
 
 \item{item}{Named list. The ID used to identify this component in Dash callbacks.}

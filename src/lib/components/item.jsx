@@ -30,7 +30,7 @@ export default class Item extends Component {
                     let containerProps, handle;
                     if (this.props.showHandle) {
                         containerProps = {ref: provided.innerRef, ...provided.draggableProps};
-                        handle = <div className='item-handle' {...provided.dragHandleProps}/>;
+                        handle = <div className='item-handle' {...provided.dragHandleProps}>{this.props.handleText}</div>;
                     }
                     else {
                         containerProps = {ref: provided.innerRef, ...provided.draggableProps, ...provided.dragHandleProps};
@@ -49,7 +49,7 @@ export default class Item extends Component {
     }
 }
 
-Item.defaultProps = {showHandle: true};
+Item.defaultProps = {showHandle: true, handleText: ''};
 
 Item.propTypes = {
     /**
@@ -58,6 +58,7 @@ Item.propTypes = {
     item: PropTypes.object,
     index: PropTypes.number,
     showHandle: PropTypes.bool,
+    handleText: PropTypes.string,
 
     /**
      * Dash-assigned callback that should be called to report property changes

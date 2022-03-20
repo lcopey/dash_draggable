@@ -9,6 +9,8 @@ class item(Component):
 
 Keyword arguments:
 
+- handleText (string; default '')
+
 - index (number; optional)
 
 - item (dict; optional):
@@ -16,12 +18,12 @@ Keyword arguments:
 
 - showHandle (boolean; default True)"""
     @_explicitize_args
-    def __init__(self, item=Component.UNDEFINED, index=Component.UNDEFINED, showHandle=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['index', 'item', 'showHandle']
+    def __init__(self, item=Component.UNDEFINED, index=Component.UNDEFINED, showHandle=Component.UNDEFINED, handleText=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['handleText', 'index', 'item', 'showHandle']
         self._type = 'item'
         self._namespace = 'dash_draggable'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['index', 'item', 'showHandle']
+        self.available_properties = ['handleText', 'index', 'item', 'showHandle']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -29,6 +29,17 @@
           "computed": false
         }
       },
+      "handleText": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
       "setProps": {
         "type": {
           "name": "func"
@@ -114,6 +125,17 @@
           "computed": false
         }
       },
+      "handleText": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
       "setProps": {
         "type": {
           "name": "func"
@@ -150,6 +172,17 @@
         "description": "",
         "defaultValue": {
           "value": "true",
+          "computed": false
+        }
+      },
+      "handleText": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
           "computed": false
         }
       },

@@ -10,8 +10,8 @@ ExampleComponent is an example component. It takes a property, `label`, and di
 }
 
 \usage{
-''DashDraggable(id=NULL, columnOrder=NULL, columns=NULL, items=NULL,
-showHandle=NULL)
+''DashDraggable(id=NULL, columnOrder=NULL, columns=NULL, handleText=NULL,
+items=NULL, showHandle=NULL)
 }
 
 \arguments{
@@ -20,6 +20,8 @@ showHandle=NULL)
 \item{columnOrder}{Unnamed list. }
 
 \item{columns}{Named list. }
+
+\item{handleText}{Character. }
 
 \item{items}{Named list. }
 

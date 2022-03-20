@@ -15,7 +15,8 @@ app.layout = html.Div([
                  'column-2': {'title': 'To Do', 'itemIds': ['task-3']}
                  },
     columnOrder=['column-2', 'column-1'],
-    showHandle=False,
+    showHandle=True,
+    handleText='X',
     ),
     html.Div(id='output')
 ])

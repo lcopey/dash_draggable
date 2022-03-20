@@ -10,11 +10,13 @@
 }
 
 \usage{
-''column(column=NULL, items=NULL, showHandle=NULL)
+''column(column=NULL, handleText=NULL, items=NULL, showHandle=NULL)
 }
 
 \arguments{
 \item{column}{Named list. }
+
+\item{handleText}{Character. }
 
 \item{items}{Unnamed list. The ID used to identify this component in Dash callbacks.}
 

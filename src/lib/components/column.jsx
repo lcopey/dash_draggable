@@ -43,7 +43,8 @@ export default class Column extends Component {
                     className={snapshot.isDraggingOver ? 'item-list-dragged-over' : 'item-list'}
                     >
                         {this.props.items.map((item, index) =>
-                            <Item key={item.id} item={item} index={index} showHandle={this.props.showHandle}/>)}
+                            <Item key={item.id} item={item} index={index} 
+                                showHandle={this.props.showHandle} handleText={this.props.handleText}/>)}
                         {provided.placeholder}
                     </div>                    
                 )}
@@ -53,7 +54,7 @@ export default class Column extends Component {
     }
 }
 
-Column.defaultProps = {showHandle: true};
+Column.defaultProps = {showHandle: true, handleText: ''};
 
 Column.propTypes = {
     /**
@@ -62,6 +63,7 @@ Column.propTypes = {
     items: PropTypes.array,
     column: PropTypes.object,
     showHandle: PropTypes.bool,
+    handleText: PropTypes.string,
 
     /**
      * Dash-assigned callback that should be called to report property changes
