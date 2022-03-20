@@ -10,13 +10,13 @@
 }
 
 \usage{
-''column(column=NULL, tasks=NULL)
+''column(column=NULL, items=NULL)
 }
 
 \arguments{
 \item{column}{Named list. }
 
-\item{tasks}{Unnamed list. The ID used to identify this component in Dash callbacks.}
+\item{items}{Unnamed list. The ID used to identify this component in Dash callbacks.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

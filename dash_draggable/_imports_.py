@@ -1,9 +1,9 @@
 from .column import column
 from .DashDraggable import DashDraggable
-from .task import task
+from .item import item
 
 __all__ = [
     "column",
     "DashDraggable",
-    "task"
+    "item"
 ]

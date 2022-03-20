@@ -7,7 +7,7 @@ const version = "0.0.1"
 
 include("jl/''_column.jl")
 include("jl/''_dashdraggable.jl")
-include("jl/''_task.jl")
+include("jl/''_item.jl")
 
 function __init__()
     DashBase.register_package(

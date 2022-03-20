@@ -1,16 +1,16 @@
 % Auto-generated: do not edit by hand
-\name{''task}
+\name{''item}
 
-\alias{''task}
+\alias{''item}
 
-\title{task component}
+\title{item component}
 
 \description{
 
 }
 
 \usage{
-''task(index=NULL, item=NULL)
+''item(index=NULL, item=NULL)
 }
 
 \arguments{

@@ -1,17 +1,17 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-''column <- function(column=NULL, items=NULL) {
+''item <- function(index=NULL, item=NULL) {
     
-    props <- list(column=column, items=items)
+    props <- list(index=index, item=item)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
     component <- list(
         props = props,
-        type = 'column',
+        type = 'item',
         namespace = 'dash_draggable',
-        propNames = c('column', 'items'),
+        propNames = c('index', 'item'),
         package = 'dashDraggable'
         )
 

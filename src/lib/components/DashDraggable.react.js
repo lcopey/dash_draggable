@@ -24,29 +24,29 @@ export default class DashDraggable extends Component {
         ) {
         return;
         }
-        let sourceColumn, destinationColumn, sourceNewTaskIds, destinationNewTaskIds;
+        let sourceColumn, destinationColumn, sourceNewItemIds, destinationNewItemIds;
         if (source.droppableId === destination.droppableId) {
             sourceColumn = destinationColumn = this.props.columns[source.droppableId];
-            sourceNewTaskIds = destinationNewTaskIds = Array.from(sourceColumn.taskIds);
+            sourceNewItemIds = destinationNewItemIds = Array.from(sourceColumn.itemIds);
         }
         else {
             sourceColumn = this.props.columns[source.droppableId];
             destinationColumn = this.props.columns[destination.droppableId];
 
-            sourceNewTaskIds = Array.from(sourceColumn.taskIds);
-            destinationNewTaskIds = Array.from(destinationColumn.taskIds);
+            sourceNewItemIds = Array.from(sourceColumn.itemIds);
+            destinationNewItemIds = Array.from(destinationColumn.itemIds);
         }
         
-        sourceNewTaskIds.splice(source.index, 1);
-        destinationNewTaskIds.splice(destination.index, 0, draggableId);
+        sourceNewItemIds.splice(source.index, 1);
+        destinationNewItemIds.splice(destination.index, 0, draggableId);
 
         const newSourceColumn = {
             ...sourceColumn,
-            taskIds: sourceNewTaskIds
+            itemIds: sourceNewItemIds
         };
         const newDestinationColumn = {
             ...destinationColumn,
-            taskIds: destinationNewTaskIds
+            itemIds: destinationNewItemIds
         };
 
         // const newProps = {
@@ -78,7 +78,7 @@ export default class DashDraggable extends Component {
     }
 
     render() {
-        const {id, tasks, columns, columnOrder, setProps} = this.props;
+        const {id, items, columns, columnOrder, setProps} = this.props;
 
         return (
             <div id={id}>
@@ -89,12 +89,12 @@ export default class DashDraggable extends Component {
                     {
                         columnOrder.map(columnId => {
                             const column = {id: columnId, ...columns[columnId]};
-                            const columnTasks = column.taskIds.map(taskId => {
-                                const task = {id: taskId, content: tasks[taskId]};
-                                return task;
+                            const columnItems = column.itemIds.map(itemId => {
+                                const item = {id: itemId, content: items[itemId]};
+                                return item;
                                 }
                             );
-                            return <Column key={column.id} column={column} tasks={columnTasks}/>
+                            return <Column key={column.id} column={column} items={columnItems}/>
                         })
                     }
                 </DragDropContext>
@@ -111,11 +111,9 @@ DashDraggable.propTypes = {
      * The ID used to identify this component in Dash callbacks.
      */
     id: PropTypes.string,
-    tasks: PropTypes.object,
+    items: PropTypes.object,
     columns: PropTypes.object,
     columnOrder: PropTypes.array,
-    columnTitles: PropTypes.array,
-
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.

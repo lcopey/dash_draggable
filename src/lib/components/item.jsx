@@ -20,12 +20,12 @@ const Handle = styled.div`
     margin-right: 8px;
 `
 
-export default class Task extends Component {
+export default class Item extends Component {
     render() {
         return (
 
             // Similarly, Draggable components expects a function as children
-            <Draggable draggableId={this.props.task.id} index={this.props.index}>
+            <Draggable draggableId={this.props.item.id} index={this.props.index}>
                 {(provided, snapshot) => (
                     <Container
                         ref={provided.innerRef}
@@ -34,7 +34,7 @@ export default class Task extends Component {
                         isDragging={snapshot.isDragging}
                     >
                         <Handle {...provided.dragHandleProps}/>
-                        {this.props.task.content}
+                        {this.props.item.content}
                     </Container>
                 )}
             </Draggable>
@@ -42,13 +42,13 @@ export default class Task extends Component {
     }
 }
 
-Task.defaultProps = {};
+Item.defaultProps = {};
 
-Task.propTypes = {
+Item.propTypes = {
     /**
      * The ID used to identify this component in Dash callbacks.
      */
-    task: PropTypes.object,
+    item: PropTypes.object,
     index: PropTypes.number,
 
     /**

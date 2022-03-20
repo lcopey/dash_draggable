@@ -4,7 +4,7 @@
     "displayName": "Column",
     "methods": [],
     "props": {
-      "tasks": {
+      "items": {
         "type": {
           "name": "array"
         },
@@ -71,7 +71,7 @@
         "required": false,
         "description": "The ID used to identify this component in Dash callbacks."
       },
-      "tasks": {
+      "items": {
         "type": {
           "name": "object"
         },
@@ -92,13 +92,6 @@
         "required": false,
         "description": ""
       },
-      "columnTitles": {
-        "type": {
-          "name": "array"
-        },
-        "required": false,
-        "description": ""
-      },
       "setProps": {
         "type": {
           "name": "func"
@@ -108,12 +101,12 @@
       }
     }
   },
-  "src/lib/components/task.jsx": {
+  "src/lib/components/item.jsx": {
     "description": "",
-    "displayName": "Task",
+    "displayName": "Item",
     "methods": [],
     "props": {
-      "task": {
+      "item": {
         "type": {
           "name": "object"
         },

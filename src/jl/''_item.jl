@@ -1,19 +1,19 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-export ''_task
+export ''_item
 
 """
-    ''_task(;kwargs...)
+    ''_item(;kwargs...)
 
-A task component.
+An item component.
 
 Keyword arguments:
 - `index` (Real; optional)
 - `item` (Dict; optional): The ID used to identify this component in Dash callbacks.
 """
-function ''_task(; kwargs...)
+function ''_item(; kwargs...)
         available_props = Symbol[:index, :item]
         wild_props = Symbol[]
-        return Component("''_task", "task", "dash_draggable", available_props, wild_props; kwargs...)
+        return Component("''_item", "item", "dash_draggable", available_props, wild_props; kwargs...)
 end
 

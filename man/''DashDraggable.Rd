@@ -10,8 +10,7 @@ ExampleComponent is an example component. It takes a property, `label`, and di
 }
 
 \usage{
-''DashDraggable(id=NULL, columnOrder=NULL, columnTitles=NULL, columns=NULL,
-tasks=NULL)
+''DashDraggable(id=NULL, columnOrder=NULL, columns=NULL, items=NULL)
 }
 
 \arguments{
@@ -19,11 +18,9 @@ tasks=NULL)
 
 \item{columnOrder}{Unnamed list. }
 
-\item{columnTitles}{Unnamed list. }
-
 \item{columns}{Named list. }
 
-\item{tasks}{Named list. }
+\item{items}{Named list. }
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

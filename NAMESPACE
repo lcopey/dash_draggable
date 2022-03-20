@@ -2,4 +2,5 @@
 
 export(''column)
 export(''DashDraggable)
-export(''task)
+export(''item)
+export(task)

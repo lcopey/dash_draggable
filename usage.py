@@ -8,7 +8,7 @@ app = dash.Dash(__name__)
 app.layout = html.Div([
     dash_draggable.DashDraggable(
         id='input',
-        tasks={'task-1': 'Take out the garbage',
+        items={'task-1': 'Take out the garbage',
                'task-2': 'Watch my favorite show',
                'task-3': 'Charge my phone'},
         # tasks={
@@ -16,8 +16,8 @@ app.layout = html.Div([
         #     'task-2': {'id': 'task-2', 'content': 'Watch my favorite show'},
         #     'task-3': {'id': 'task-3', 'content': 'Charge my phone'},
         # },
-        columns={'column-1': {'taskIds': ['task-1', 'task-2']},
-                 'column-2': {'title': 'To Do', 'taskIds': ['task-3']}
+        columns={'column-1': {'itemIds': ['task-1', 'task-2']},
+                 'column-2': {'title': 'To Do', 'itemIds': ['task-3']}
                  },
         # columns={
         #     'column-1': {

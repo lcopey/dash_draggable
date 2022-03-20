@@ -18,18 +18,16 @@ Keyword arguments:
 
 - columnOrder (list; optional)
 
-- columnTitles (list; optional)
-
 - columns (dict; optional)
 
-- tasks (dict; optional)"""
+- items (dict; optional)"""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, tasks=Component.UNDEFINED, columns=Component.UNDEFINED, columnOrder=Component.UNDEFINED, columnTitles=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'columnOrder', 'columnTitles', 'columns', 'tasks']
+    def __init__(self, id=Component.UNDEFINED, items=Component.UNDEFINED, columns=Component.UNDEFINED, columnOrder=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'columnOrder', 'columns', 'items']
         self._type = 'DashDraggable'
         self._namespace = 'dash_draggable'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'columnOrder', 'columnTitles', 'columns', 'tasks']
+        self.available_properties = ['id', 'columnOrder', 'columns', 'items']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

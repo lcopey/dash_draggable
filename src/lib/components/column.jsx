@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
-import Task from './task.jsx'
+import Item from './item.jsx'
 
 const Container = styled.div`
     margin: 8px;
@@ -12,7 +12,7 @@ const Container = styled.div`
 const Title = styled.h3`
     padding: 8px;
 `;
-const TaskList = styled.div`
+const ItemList = styled.div`
     padding: 8px;
     background-color: ${props => props.isDraggingOver ? 'aliceblue' : 'white'};x
 `;
@@ -35,15 +35,15 @@ export default class Column extends Component {
             So everything is wrapped into a function taking provided as parameters and returns our DOM Component */}
             <Droppable droppableId={this.props.column.id}>
                 {(provided, snapshot) => (
-                    <TaskList
+                    <ItemList
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     isDraggingOver={snapshot.isDraggingOver}
                     >
-                        {this.props.tasks.map((task, index) =>
-                            <Task key={task.id} task={task} index={index}/>)}
+                        {this.props.items.map((item, index) =>
+                            <Item key={item.id} item={item} index={index}/>)}
                         {provided.placeholder}
-                    </TaskList>
+                    </ItemList>
                 )}
             </Droppable>
         </Container>
@@ -57,7 +57,7 @@ Column.propTypes = {
     /**
      * The ID used to identify this component in Dash callbacks.
      */
-    tasks: PropTypes.array,
+    items: PropTypes.array,
     column: PropTypes.object,
 
     /**

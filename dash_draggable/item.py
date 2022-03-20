@@ -3,8 +3,8 @@
 from dash.development.base_component import Component, _explicitize_args
 
 
-class task(Component):
-    """A task component.
+class item(Component):
+    """An item component.
 
 
 Keyword arguments:
@@ -16,7 +16,7 @@ Keyword arguments:
     @_explicitize_args
     def __init__(self, item=Component.UNDEFINED, index=Component.UNDEFINED, **kwargs):
         self._prop_names = ['index', 'item']
-        self._type = 'task'
+        self._type = 'item'
         self._namespace = 'dash_draggable'
         self._valid_wildcard_attributes =            []
         self.available_properties = ['index', 'item']
@@ -29,4 +29,4 @@ Keyword arguments:
             if k not in args:
                 raise TypeError(
                     'Required argument `' + k + '` was not specified.')
-        super(task, self).__init__(**args)
+        super(item, self).__init__(**args)
