@@ -16,9 +16,10 @@ Keyword arguments:
 - `columnOrder` (Array; optional)
 - `columns` (Dict; optional)
 - `items` (Dict; optional)
+- `showHandle` (Bool; optional)
 """
 function ''_dashdraggable(; kwargs...)
-        available_props = Symbol[:id, :columnOrder, :columns, :items]
+        available_props = Symbol[:id, :columnOrder, :columns, :items, :showHandle]
         wild_props = Symbol[]
         return Component("''_dashdraggable", "DashDraggable", "dash_draggable", available_props, wild_props; kwargs...)
 end

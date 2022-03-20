@@ -12,14 +12,16 @@ Keyword arguments:
 - column (dict; optional)
 
 - items (list; optional):
-    The ID used to identify this component in Dash callbacks."""
+    The ID used to identify this component in Dash callbacks.
+
+- showHandle (boolean; default True)"""
     @_explicitize_args
-    def __init__(self, items=Component.UNDEFINED, column=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['column', 'items']
+    def __init__(self, items=Component.UNDEFINED, column=Component.UNDEFINED, showHandle=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['column', 'items', 'showHandle']
         self._type = 'column'
         self._namespace = 'dash_draggable'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['column', 'items']
+        self.available_properties = ['column', 'items', 'showHandle']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

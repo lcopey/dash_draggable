@@ -49,13 +49,6 @@ export default class DashDraggable extends Component {
             itemIds: destinationNewItemIds
         };
 
-        // const newProps = {
-        //     ...this.props,
-        //     columns: {...this.props.columns,
-        //         [newSourceColumn.id]: newSourceColumn,
-        //         [destinationColumn.id]: newDestinationColumn
-        //     }
-        // };
         const newProps = {
             ...this.props,
             columns: {...this.props.columns,
@@ -78,7 +71,7 @@ export default class DashDraggable extends Component {
     }
 
     render() {
-        const {id, items, columns, columnOrder, setProps} = this.props;
+        const {id, items, columns, columnOrder, showHandle, setProps} = this.props;
 
         return (
             <div id={id}>
@@ -94,7 +87,7 @@ export default class DashDraggable extends Component {
                                 return item;
                                 }
                             );
-                            return <Column key={column.id} column={column} items={columnItems}/>
+                            return <Column key={column.id} column={column} items={columnItems} showHandle={showHandle}/>
                         })
                     }
                 </DragDropContext>
@@ -104,7 +97,7 @@ export default class DashDraggable extends Component {
     }
 }
 
-DashDraggable.defaultProps = {};
+DashDraggable.defaultProps = {showHandle: true};
 
 DashDraggable.propTypes = {
     /**
@@ -114,6 +107,7 @@ DashDraggable.propTypes = {
     items: PropTypes.object,
     columns: PropTypes.object,
     columnOrder: PropTypes.array,
+    showHandle: PropTypes.bool,
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.

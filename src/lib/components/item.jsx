@@ -26,23 +26,30 @@ export default class Item extends Component {
 
             // Similarly, Draggable components expects a function as children
             <Draggable draggableId={this.props.item.id} index={this.props.index}>
-                {(provided, snapshot) => (
-                    <Container
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        // {...provided.dragHandleProps}
-                        isDragging={snapshot.isDragging}
-                    >
-                        <Handle {...provided.dragHandleProps}/>
-                        {this.props.item.content}
-                    </Container>
-                )}
+                {(provided, snapshot) => {
+                    let containerProps, handle;
+                    if (this.props.showHandle) {
+                        containerProps = {ref: provided.innerRef, ...provided.draggableProps};
+                        handle = <Handle {...provided.dragHandleProps}/>;
+                    }
+                    else {
+                        containerProps = {ref: provided.innerRef, ...provided.draggableProps, ...provided.dragHandleProps};
+                        handle = '';
+                    }
+                    return <Container
+                                {...containerProps}
+                                isDragging={snapshot.isDragging}
+                            >
+                                {handle}
+                                {this.props.item.content}
+                            </Container>
+                }}
             </Draggable>
         )
     }
 }
 
-Item.defaultProps = {};
+Item.defaultProps = {showHandle: true};
 
 Item.propTypes = {
     /**
@@ -50,6 +57,7 @@ Item.propTypes = {
      */
     item: PropTypes.object,
     index: PropTypes.number,
+    showHandle: PropTypes.bool,
 
     /**
      * Dash-assigned callback that should be called to report property changes
