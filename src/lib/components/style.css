@@ -1,0 +1,44 @@
+.column-container {
+    margin: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+}
+
+.item-container {
+    border-radius: 2px;
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: white;
+    box-shadow: 1px 1px 5px lightgrey;
+    display: flex;
+}
+
+.item-container-is-dragging {
+    border-radius: 2px;
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 5px lightgrey;
+    display: flex;
+}
+
+.item-handle {
+    width: 20px;
+    height: 20px;
+    background-color: orange;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.column-title {
+    padding: 8px;
+}
+
+.item-list {
+    padding: 8px;
+    background-color: white;
+}
+.item-list-dragged-over {
+    padding: 8px;
+    background-color: aliceblue;
+}

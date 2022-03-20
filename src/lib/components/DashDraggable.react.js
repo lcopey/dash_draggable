@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {DragDropContext} from 'react-beautiful-dnd';
 import Column from './column.jsx';
+import './style.css';
 
 /**
  * ExampleComponent is an example component.
