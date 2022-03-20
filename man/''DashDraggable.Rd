@@ -10,13 +10,16 @@ ExampleComponent is an example component. It takes a property, `label`, and di
 }
 
 \usage{
-''DashDraggable(id=NULL, columnOrder=NULL, columns=NULL, tasks=NULL)
+''DashDraggable(id=NULL, columnOrder=NULL, columnTitles=NULL, columns=NULL,
+tasks=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
 \item{columnOrder}{Unnamed list. }
+
+\item{columnTitles}{Unnamed list. }
 
 \item{columns}{Named list. }
 

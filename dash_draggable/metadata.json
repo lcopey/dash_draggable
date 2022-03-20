@@ -92,6 +92,13 @@
         "required": false,
         "description": ""
       },
+      "columnTitles": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
       "setProps": {
         "type": {
           "name": "func"

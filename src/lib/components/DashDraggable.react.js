@@ -49,13 +49,19 @@ export default class DashDraggable extends Component {
             taskIds: destinationNewTaskIds
         };
 
+        // const newProps = {
+        //     ...this.props,
+        //     columns: {...this.props.columns,
+        //         [newSourceColumn.id]: newSourceColumn,
+        //         [destinationColumn.id]: newDestinationColumn
+        //     }
+        // };
         const newProps = {
             ...this.props,
-            columns: {...
-                this.props.columns,
-                [newSourceColumn.id]: newSourceColumn,
-                [destinationColumn.id]: newDestinationColumn
-            }
+            columns: {...this.props.columns,
+                [source.droppableId]: newSourceColumn,
+                [destination.droppableId]: newDestinationColumn
+                }
         };
         this.props.setProps(newProps);
 
@@ -82,8 +88,12 @@ export default class DashDraggable extends Component {
                 onDragEnd={this.onDragEnd}>
                     {
                         columnOrder.map(columnId => {
-                            const column = columns[columnId];
-                            const columnTasks = column.taskIds.map((taskId => tasks[taskId]));
+                            const column = {id: columnId, ...columns[columnId]};
+                            const columnTasks = column.taskIds.map(taskId => {
+                                const task = {id: taskId, content: tasks[taskId]};
+                                return task;
+                                }
+                            );
                             return <Column key={column.id} column={column} tasks={columnTasks}/>
                         })
                     }
@@ -104,6 +114,7 @@ DashDraggable.propTypes = {
     tasks: PropTypes.object,
     columns: PropTypes.object,
     columnOrder: PropTypes.array,
+    columnTitles: PropTypes.array,
 
     /**
      * Dash-assigned callback that should be called to report property changes
