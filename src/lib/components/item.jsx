@@ -39,7 +39,7 @@ export default class Item extends Component {
                     const isDragging = snapshot.isDragging;
                     return <div className={snapshot.isDragging ? 'item-container-is-dragging' : 'item-container'}
                                 {...containerProps}
-                                isDragging={snapshot.isDragging}
+                                // isDragging={snapshot.isDragging}
                             >
                                 {handle}
                                 {this.props.item.content}

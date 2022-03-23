@@ -38,11 +38,9 @@ export default class Column extends Component {
                 {(provided, snapshot) => {
                     let className=snapshot.isDraggingOver ? 'item-list-dragged-over' : 'item-list';
                     className = className + ' ' + this.props.direction;
-                    console.log(className);
                     return <div
                     ref={provided.innerRef}
                     {...provided.droppableProps}
-                    isDraggingOver={snapshot.isDraggingOver}
                     className={className}
                     >
                         {this.props.items.map((item, index) =>
@@ -52,20 +50,6 @@ export default class Column extends Component {
                         {provided.placeholder}
                     </div>
                 }
-                // (
-                //     <div
-                //     ref={provided.innerRef}
-                //     {...provided.droppableProps}
-                //     isDraggingOver={snapshot.isDraggingOver}
-                //     className={snapshot.isDraggingOver ? 'item-list-dragged-over' : 'item-list'}
-                //     >
-                //         {this.props.items.map((item, index) =>
-                //             <Item key={item.id} item={item} index={index} 
-                //                 showHandle={this.props.showHandle} handleText={this.props.handleText}
-                //                 direction={this.props.direction}/>)}
-                //         {provided.placeholder}
-                //     </div>
-                // )
                 }
             </Droppable>
         </div>
