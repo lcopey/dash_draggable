@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
 import Item from './item.jsx'
 
@@ -34,27 +34,46 @@ export default class Column extends Component {
             {title}
             {/* Droppable needs to have its children as a function
             So everything is wrapped into a function taking provided as parameters and returns our DOM Component */}
-            <Droppable droppableId={this.props.column.id}>
-                {(provided, snapshot) => (
-                    <div
+            <Droppable droppableId={this.props.column.id} direction={this.props.direction}>
+                {(provided, snapshot) => {
+                    let className=snapshot.isDraggingOver ? 'item-list-dragged-over' : 'item-list';
+                    className = className + ' ' + this.props.direction;
+                    console.log(className);
+                    return <div
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     isDraggingOver={snapshot.isDraggingOver}
-                    className={snapshot.isDraggingOver ? 'item-list-dragged-over' : 'item-list'}
+                    className={className}
                     >
                         {this.props.items.map((item, index) =>
                             <Item key={item.id} item={item} index={index} 
-                                showHandle={this.props.showHandle} handleText={this.props.handleText}/>)}
+                                showHandle={this.props.showHandle} handleText={this.props.handleText}
+                                direction={this.props.direction}/>)}
                         {provided.placeholder}
-                    </div>                    
-                )}
+                    </div>
+                }
+                // (
+                //     <div
+                //     ref={provided.innerRef}
+                //     {...provided.droppableProps}
+                //     isDraggingOver={snapshot.isDraggingOver}
+                //     className={snapshot.isDraggingOver ? 'item-list-dragged-over' : 'item-list'}
+                //     >
+                //         {this.props.items.map((item, index) =>
+                //             <Item key={item.id} item={item} index={index} 
+                //                 showHandle={this.props.showHandle} handleText={this.props.handleText}
+                //                 direction={this.props.direction}/>)}
+                //         {provided.placeholder}
+                //     </div>
+                // )
+                }
             </Droppable>
         </div>
         )
     }
 }
 
-Column.defaultProps = {showHandle: true, handleText: ''};
+Column.defaultProps = {showHandle: true, handleText: '', direction: 'vertical'};
 
 Column.propTypes = {
     /**
@@ -64,6 +83,8 @@ Column.propTypes = {
     column: PropTypes.object,
     showHandle: PropTypes.bool,
     handleText: PropTypes.string,
+    // should be one of 'horizontal' | 'vertical'
+    direction: PropTypes.string,
 
     /**
      * Dash-assigned callback that should be called to report property changes

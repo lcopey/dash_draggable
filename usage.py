@@ -17,6 +17,7 @@ app.layout = html.Div([
     columnOrder=['column-2', 'column-1'],
     showHandle=True,
     handleText='X',
+    droppableDirection='horizontal',
     ),
     html.Div(id='output')
 ])

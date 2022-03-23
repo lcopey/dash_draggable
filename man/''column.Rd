@@ -10,11 +10,14 @@
 }
 
 \usage{
-''column(column=NULL, handleText=NULL, items=NULL, showHandle=NULL)
+''column(column=NULL, direction=NULL, handleText=NULL, items=NULL,
+showHandle=NULL)
 }
 
 \arguments{
 \item{column}{Named list. }
+
+\item{direction}{Character. }
 
 \item{handleText}{Character. }
 

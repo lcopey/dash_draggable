@@ -40,6 +40,17 @@
           "computed": false
         }
       },
+      "direction": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'vertical'",
+          "computed": false
+        }
+      },
       "setProps": {
         "type": {
           "name": "func"
@@ -133,6 +144,17 @@
         "description": "",
         "defaultValue": {
           "value": "''",
+          "computed": false
+        }
+      },
+      "droppableDirection": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'vertical'",
           "computed": false
         }
       },

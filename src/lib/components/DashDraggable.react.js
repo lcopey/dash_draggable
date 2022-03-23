@@ -89,7 +89,8 @@ export default class DashDraggable extends Component {
                                 }
                             );
                             return <Column key={column.id} column={column} items={columnItems} 
-                                        showHandle={this.props.showHandle} handleText={this.props.handleText}/>
+                                        showHandle={this.props.showHandle} handleText={this.props.handleText}
+                                        direction={this.props.droppableDirection}/>
                         })
                     }
                 </DragDropContext>
@@ -99,7 +100,7 @@ export default class DashDraggable extends Component {
     }
 }
 
-DashDraggable.defaultProps = {showHandle: true, handleText: ''};
+DashDraggable.defaultProps = {showHandle: true, handleText: '', droppableDirection: 'vertical'};
 
 DashDraggable.propTypes = {
     /**
@@ -111,6 +112,8 @@ DashDraggable.propTypes = {
     columnOrder: PropTypes.array,
     showHandle: PropTypes.bool,
     handleText: PropTypes.string,
+    // should be one of 'horizontal' | 'vertical'
+    droppableDirection: PropTypes.string,
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.

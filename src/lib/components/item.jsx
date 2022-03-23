@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 
 // const Container = styled.div`
@@ -36,6 +36,7 @@ export default class Item extends Component {
                         containerProps = {ref: provided.innerRef, ...provided.draggableProps, ...provided.dragHandleProps};
                         handle = '';
                     }
+                    const isDragging = snapshot.isDragging;
                     return <div className={snapshot.isDragging ? 'item-container-is-dragging' : 'item-container'}
                                 {...containerProps}
                                 isDragging={snapshot.isDragging}
