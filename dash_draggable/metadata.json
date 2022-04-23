@@ -2,7 +2,20 @@
   "src/lib/components/column.jsx": {
     "description": "",
     "displayName": "Column",
-    "methods": [],
+    "methods": [
+      {
+        "name": "setSearchValue",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
     "props": {
       "items": {
         "type": {
@@ -42,7 +55,17 @@
       },
       "direction": {
         "type": {
-          "name": "string"
+          "name": "enum",
+          "value": [
+            {
+              "value": "'horizontal'",
+              "computed": false
+            },
+            {
+              "value": "'vertical'",
+              "computed": false
+            }
+          ]
         },
         "required": false,
         "description": "",
@@ -147,9 +170,34 @@
           "computed": false
         }
       },
-      "droppableDirection": {
+      "className": {
         "type": {
           "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "droppableDirection": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "enum",
+              "value": [
+                {
+                  "value": "'horizontal'",
+                  "computed": false
+                },
+                {
+                  "value": "'vertical'",
+                  "computed": false
+                }
+              ]
+            },
+            {
+              "name": "object"
+            }
+          ]
         },
         "required": false,
         "description": "",

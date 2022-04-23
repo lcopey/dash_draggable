@@ -13,15 +13,16 @@ It renders an input with the property `value`
 which is editable by the user.
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
+- `className` (String; optional)
 - `columnOrder` (Array; optional)
 - `columns` (Dict; optional)
-- `droppableDirection` (String; optional)
+- `droppableDirection` (a value equal to: 'horizontal', 'vertical' | Dict; optional)
 - `handleText` (String; optional)
 - `items` (Dict; optional)
 - `showHandle` (Bool; optional)
 """
 function ''_dashdraggable(; kwargs...)
-        available_props = Symbol[:id, :columnOrder, :columns, :droppableDirection, :handleText, :items, :showHandle]
+        available_props = Symbol[:id, :className, :columnOrder, :columns, :droppableDirection, :handleText, :items, :showHandle]
         wild_props = Symbol[]
         return Component("''_dashdraggable", "DashDraggable", "dash_draggable", available_props, wild_props; kwargs...)
 end

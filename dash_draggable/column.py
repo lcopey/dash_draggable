@@ -11,7 +11,7 @@ Keyword arguments:
 
 - column (dict; optional)
 
-- direction (string; default 'vertical')
+- direction (a value equal to: 'horizontal', 'vertical'; default 'vertical')
 
 - handleText (string; default '')
 

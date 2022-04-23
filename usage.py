@@ -10,14 +10,15 @@ app.layout = html.Div([
         id='input',
         items={'task-1': 'Take out the garbage',
                'task-2': 'Watch my favorite show',
-               'task-3': 'Charge my phone'},
-        columns={'column-1': {'itemIds': ['task-1', 'task-2']},
-                 'column-2': {'title': 'To Do', 'itemIds': ['task-3']}
+               'task-3': 'Charge my phone',
+               'task-4': 'Look at the windows'},
+        columns={'column-1': {'itemIds': ['task-1', 'task-2'], 'direction': 'horizontal'},
+                 'column-2': {'title': 'To Do', 'itemIds': ['task-3', 'task-4'], 'searchable': True}
                  },
-    columnOrder=['column-2', 'column-1'],
+    columnOrder=['column-1', 'column-2'],
     showHandle=True,
-    handleText='X',
-    droppableDirection='horizontal',
+    # handleText='\u2630',
+    droppableDirection='vertical',
     ),
     html.Div(id='output')
 ])
@@ -29,4 +30,4 @@ def display_output(value):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+     app.run_server(debug=True)

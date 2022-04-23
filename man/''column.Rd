@@ -17,7 +17,7 @@ showHandle=NULL)
 \arguments{
 \item{column}{Named list. }
 
-\item{direction}{Character. }
+\item{direction}{A value equal to: 'horizontal', 'vertical'. }
 
 \item{handleText}{Character. }
 

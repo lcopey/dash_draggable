@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {DragDropContext} from 'react-beautiful-dnd';
+import React, { Component } from 'react';
+import PropTypes, { string } from 'prop-types';
+import { DragDropContext } from 'react-beautiful-dnd';
 import Column from './column.jsx';
 import './style.css';
 
@@ -16,14 +16,14 @@ export default class DashDraggable extends Component {
         const { destination, source, draggableId } = result;
 
         if (!destination) {
-        return;
+            return;
         }
 
         if (
-        destination.droppableId === source.droppableId &&
-        destination.index === source.index
+            destination.droppableId === source.droppableId &&
+            destination.index === source.index
         ) {
-        return;
+            return;
         }
         let sourceColumn, destinationColumn, sourceNewItemIds, destinationNewItemIds;
         if (source.droppableId === destination.droppableId) {
@@ -37,7 +37,7 @@ export default class DashDraggable extends Component {
             sourceNewItemIds = Array.from(sourceColumn.itemIds);
             destinationNewItemIds = Array.from(destinationColumn.itemIds);
         }
-        
+
         sourceNewItemIds.splice(source.index, 1);
         destinationNewItemIds.splice(destination.index, 0, draggableId);
 
@@ -52,10 +52,11 @@ export default class DashDraggable extends Component {
 
         const newProps = {
             ...this.props,
-            columns: {...this.props.columns,
+            columns: {
+                ...this.props.columns,
                 [source.droppableId]: newSourceColumn,
                 [destination.droppableId]: newDestinationColumn
-                }
+            }
         };
         this.props.setProps(newProps);
 
@@ -63,44 +64,43 @@ export default class DashDraggable extends Component {
     onDragStart = () => {
         // document.body.style.color = 'orange';
         // document.body.style.transition = `background-color 0.2s ease`;
-      }
-    
+    }
+
     onDragUpdate = update => {
-    // const { destination } = update;
-    // const opacity = destination ? destination.index / Object.keys(this.state.tasks).length : 0;
-    // document.body.style.backgroundColor = `rgba(153, 141, 217, ${opacity})`;
+        // const { destination } = update;
+        // const opacity = destination ? destination.index / Object.keys(this.state.tasks).length : 0;
+        // document.body.style.backgroundColor = `rgba(153, 141, 217, ${opacity})`;
     }
 
     render() {
-        const {id, items, columns, columnOrder, setProps} = this.props;
+        const { id, items, columns, columnOrder, className, setProps } = this.props;
 
         return (
-            <div id={id}>
+            <div id={id} className={className}>
                 <DragDropContext
-                onDragStart={this.onDragStart}
-                onDragUpdate={this.onDragUpdate}
-                onDragEnd={this.onDragEnd}>
+                    onDragStart={this.onDragStart}
+                    onDragUpdate={this.onDragUpdate}
+                    onDragEnd={this.onDragEnd}>
                     {
                         columnOrder.map(columnId => {
-                            const column = {id: columnId, ...columns[columnId]};
+                            const column = { id: columnId, ...columns[columnId] };
                             const columnItems = column.itemIds.map(itemId => {
-                                const item = {id: itemId, content: items[itemId]};
+                                const item = { id: itemId, content: items[itemId] };
                                 return item;
-                                }
-                            );
-                            return <Column key={column.id} column={column} items={columnItems} 
-                                        showHandle={this.props.showHandle} handleText={this.props.handleText}
-                                        direction={this.props.droppableDirection}/>
+                            });
+
+                            return <Column key={column.id} column={column} items={columnItems}
+                                showHandle={this.props.showHandle} handleText={this.props.handleText}
+                                direction={this.props.droppableDirection} />
                         })
                     }
                 </DragDropContext>
-
             </div>
         );
     }
 }
 
-DashDraggable.defaultProps = {showHandle: true, handleText: '', droppableDirection: 'vertical'};
+DashDraggable.defaultProps = { showHandle: true, handleText: '', droppableDirection: 'vertical' };
 
 DashDraggable.propTypes = {
     /**
@@ -112,8 +112,9 @@ DashDraggable.propTypes = {
     columnOrder: PropTypes.array,
     showHandle: PropTypes.bool,
     handleText: PropTypes.string,
+    className: PropTypes.string,
     // should be one of 'horizontal' | 'vertical'
-    droppableDirection: PropTypes.string,
+    droppableDirection: PropTypes.oneOfType([PropTypes.oneOf(['horizontal', 'vertical']), PropTypes.object]),
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.

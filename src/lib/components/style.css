@@ -7,19 +7,15 @@
 .item-container {
     border-radius: 2px;
     padding: 8px;
-    margin-bottom: 8px;
+    margin: 4px;
     background-color: white;
     box-shadow: 1px 1px 5px lightgrey;
     display: flex;
+    width: fit-content;
 }
 
-.item-container-is-dragging {
-    border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 8px;
+.is-dragging {
     background-color: whitesmoke;
-    box-shadow: 1px 1px 5px lightgrey;
-    display: flex;
 }
 
 .item-handle {
@@ -33,13 +29,16 @@
 .column-title {
     padding: 8px;
 }
+.search-input {
+
+}
 
 .item-list {
     padding: 8px;
     background-color: white;
 }
-.item-list-dragged-over {
-    padding: 8px;
+
+.dragged-over {
     background-color: aliceblue;
 }
 

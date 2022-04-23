@@ -1,63 +1,81 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
 import Item from './item.jsx'
 
-// const Container = styled.div`
-//     margin: 8px;
-//     border: 1px solid lightgrey;
-//     border-radius: 2px;
-// `;
-// const Title = styled.h3`
-//     padding: 8px;
-// `;
-// const ItemList = styled.div`
-//     padding: 8px;
-//     background-color: ${props => props.isDraggingOver ? 'aliceblue' : 'white'};
-// `;
 
 
 export default class Column extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { searchValue: '' };
+        this.setSearchValue = this.setSearchValue.bind(this);
+    }
+
+    setSearchValue(e) {
+        console.log(e.target.value);
+        this.setState({ searchValue: e.target.value });
+    }
+
     render() {
-        let title;
-        if (this.props.column.title) {
-            // title = <Title>{this.props.column.title}</Title>
-            title = <div className='column-title'>{this.props.column.title}</div>
-        }
-        else {
-            title = '';
-        }
+        const title = this.props.column.title ? <div
+            className='column-title'>
+            {this.props.column.title}
+        </div> : '';
+
+        const input = this.props.column.searchable ? <input
+            className='search-input'
+            input='text'
+            value={this.state.searchValue}
+            placeholder='Search'
+            onChange={this.setSearchValue} /> : '';
+
+        const direction = this.props.column.direction ? this.props.column.direction : this.props.direction;
+        const customClassName = this.props.column.className ? this.props.column.className : '';
 
         return (
-        <div className='column-container'>
-            {title}
-            {/* Droppable needs to have its children as a function
-            So everything is wrapped into a function taking provided as parameters and returns our DOM Component */}
-            <Droppable droppableId={this.props.column.id} direction={this.props.direction}>
-                {(provided, snapshot) => {
-                    let className=snapshot.isDraggingOver ? 'item-list-dragged-over' : 'item-list';
-                    className = className + ' ' + this.props.direction;
-                    return <div
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                    className={className}
-                    >
-                        {this.props.items.map((item, index) =>
-                            <Item key={item.id} item={item} index={index} 
-                                showHandle={this.props.showHandle} handleText={this.props.handleText}
-                                direction={this.props.direction}/>)}
-                        {provided.placeholder}
-                    </div>
-                }
-                }
-            </Droppable>
-        </div>
+            <div className='column-container'>
+                {title}
+
+                {/* Droppable needs to have its children as a function
+                So everything is wrapped into a function taking provided 
+                as parameters and returns our DOM Component */}
+                <Droppable droppableId={this.props.column.id} direction={direction}>
+                    {(provided, snapshot) => {
+                        const classSuffix = snapshot.isDraggingOver ? 'dragged-over' : '';
+                        const className = 'item-list' + ' ' + classSuffix + ' ' + direction + ' ' + customClassName;
+
+                        // filter items if the column is searchable
+                        let items;
+                        if (this.props.column.searchable & this.state.searchValue !== '') {
+                            items = this.props.items.filter(item => item.content.includes(this.state.searchValue));
+                        }
+                        else {
+                            items = this.props.items;
+                        }
+
+                        return <div
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                            className={className}
+                        >
+                            {input}
+                            {items.map((item, index) =>
+                                <Item key={item.id} item={item} index={index}
+                                    showHandle={this.props.showHandle}
+                                    handleText={this.props.handleText}
+                                    direction={direction} />)}
+                            {provided.placeholder}
+                        </div>
+                    }
+                    }
+                </Droppable>
+            </div>
         )
     }
 }
 
-Column.defaultProps = {showHandle: true, handleText: '', direction: 'vertical'};
+Column.defaultProps = { showHandle: true, handleText: '', direction: 'vertical' };
 
 Column.propTypes = {
     /**
@@ -68,7 +86,7 @@ Column.propTypes = {
     showHandle: PropTypes.bool,
     handleText: PropTypes.string,
     // should be one of 'horizontal' | 'vertical'
-    direction: PropTypes.string,
+    direction: PropTypes.oneOf(['horizontal', 'vertical']),
 
     /**
      * Dash-assigned callback that should be called to report property changes

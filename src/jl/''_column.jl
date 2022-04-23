@@ -9,7 +9,7 @@ A column component.
 
 Keyword arguments:
 - `column` (Dict; optional)
-- `direction` (String; optional)
+- `direction` (a value equal to: 'horizontal', 'vertical'; optional)
 - `handleText` (String; optional)
 - `items` (Array; optional): The ID used to identify this component in Dash callbacks.
 - `showHandle` (Bool; optional)

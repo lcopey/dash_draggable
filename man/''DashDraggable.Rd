@@ -10,7 +10,7 @@ ExampleComponent is an example component. It takes a property, `label`, and di
 }
 
 \usage{
-''DashDraggable(id=NULL, columnOrder=NULL, columns=NULL,
+''DashDraggable(id=NULL, className=NULL, columnOrder=NULL, columns=NULL,
 droppableDirection=NULL, handleText=NULL, items=NULL,
 showHandle=NULL)
 }
@@ -18,11 +18,13 @@ showHandle=NULL)
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
+\item{className}{Character. }
+
 \item{columnOrder}{Unnamed list. }
 
 \item{columns}{Named list. }
 
-\item{droppableDirection}{Character. }
+\item{droppableDirection}{A value equal to: 'horizontal', 'vertical' | named list. }
 
 \item{handleText}{Character. }
 
