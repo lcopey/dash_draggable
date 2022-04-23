@@ -30,7 +30,7 @@
     padding: 8px;
 }
 .search-input {
-
+    width: fit-content;
 }
 
 .item-list {
