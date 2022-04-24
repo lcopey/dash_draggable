@@ -12,24 +12,56 @@ import './style.css';
  * which is editable by the user.
  */
 export default class DashDraggable extends Component {
+
     onDragEnd = result => {
         const { destination, source, draggableId } = result;
+        this.move(destination, source, draggableId);
+    }
 
+    onDragStart = () => {
+    }
+
+    onDragUpdate = update => {
+    }
+
+    onItemClose = (item) => {
+        // find source column id
+        //      corresponding index in the column
+        // destination id should be item.sourceId
+        //      last index in the column
+        // draggableId is the itemId
+        const itemId = item.props.item.id;
+        const sourceId = item.props.columnId;
+        const destinationId = item.props.item.sourceId;
+        const sourceIndex = item.props.index;
+
+        const destination = { droppableId: destinationId, index: 0 };
+        const source = { droppableId: sourceId, index: sourceIndex };
+        this.move(destination, source, itemId)
+    }
+
+    move = (destination, source, draggableId) => {
+
+        // If destination is null, cancel the drag and drop move
         if (!destination) {
             return;
         }
 
+        // If the item is dropped at the same place
         if (
             destination.droppableId === source.droppableId &&
             destination.index === source.index
         ) {
             return;
         }
+
         let sourceColumn, destinationColumn, sourceNewItemIds, destinationNewItemIds;
+        // In case it is just a swap between two items in the same container
         if (source.droppableId === destination.droppableId) {
             sourceColumn = destinationColumn = this.props.columns[source.droppableId];
             sourceNewItemIds = destinationNewItemIds = Array.from(sourceColumn.itemIds);
         }
+        // In case the source and the destination are different
         else {
             sourceColumn = this.props.columns[source.droppableId];
             destinationColumn = this.props.columns[destination.droppableId];
@@ -59,17 +91,6 @@ export default class DashDraggable extends Component {
             }
         };
         this.props.setProps(newProps);
-
-    };
-    onDragStart = () => {
-        // document.body.style.color = 'orange';
-        // document.body.style.transition = `background-color 0.2s ease`;
-    }
-
-    onDragUpdate = update => {
-        // const { destination } = update;
-        // const opacity = destination ? destination.index / Object.keys(this.state.tasks).length : 0;
-        // document.body.style.backgroundColor = `rgba(153, 141, 217, ${opacity})`;
     }
 
     render() {
@@ -85,7 +106,7 @@ export default class DashDraggable extends Component {
                         columnOrder.map(columnId => {
                             const column = { id: columnId, ...columns[columnId] };
                             const columnItems = column.itemIds.map(itemId => {
-                                const item = { id: itemId, content: items[itemId] };
+                                const item = { id: itemId, onItemClose: this.onItemClose, ...items[itemId] };
                                 return item;
                             });
 

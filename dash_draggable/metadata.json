@@ -117,6 +117,38 @@
           }
         ],
         "returns": null
+      },
+      {
+        "name": "onItemClose",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "item",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "move",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "destination",
+            "type": null
+          },
+          {
+            "name": "source",
+            "type": null
+          },
+          {
+            "name": "draggableId",
+            "type": null
+          }
+        ],
+        "returns": null
       }
     ],
     "props": {
@@ -218,7 +250,20 @@
   "src/lib/components/item.jsx": {
     "description": "",
     "displayName": "Item",
-    "methods": [],
+    "methods": [
+      {
+        "name": "onItemClose",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "event",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
     "props": {
       "item": {
         "type": {

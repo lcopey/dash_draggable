@@ -13,7 +13,6 @@ export default class Column extends Component {
     }
 
     setSearchValue(e) {
-        console.log(e.target.value);
         this.setState({ searchValue: e.target.value });
     }
 
@@ -30,8 +29,10 @@ export default class Column extends Component {
             placeholder='Search'
             onChange={this.setSearchValue} /> : '';
 
-        const direction = this.props.column.direction ? this.props.column.direction : this.props.direction;
-        const customClassName = this.props.column.className ? this.props.column.className : '';
+        const direction = this.props.column.direction ?
+            this.props.column.direction : this.props.direction;
+        const customClassName = this.props.column.className ?
+            this.props.column.className : '';
 
         return (
             <div className='column-container'>
@@ -60,11 +61,15 @@ export default class Column extends Component {
                             className={className}
                         >
                             {input}
-                            {items.map((item, index) =>
-                                <Item key={item.id} item={item} index={index}
+                            {items.map((item, index) => {
+                                const showCloseButton = (item.sourceId != undefined) && (item.sourceId != this.props.column.id);
+                                return <Item key={item.id} item={item} index={index}
                                     showHandle={this.props.showHandle}
                                     handleText={this.props.handleText}
-                                    direction={direction} />)}
+                                    columnId={this.props.column.id}
+                                    showCloseButton={showCloseButton}
+                                    direction={direction} />
+                            })}
                             {provided.placeholder}
                         </div>
                     }

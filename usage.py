@@ -1,20 +1,19 @@
 import dash_draggable
 import dash
 from dash.dependencies import Input, Output
-import dash_html_components as html
+from dash import html
 
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
     dash_draggable.DashDraggable(
         id='input',
-        items={'task-1': 'Take out the garbage',
-               'task-2': 'Watch my favorite show',
-               'task-3': 'Charge my phone',
-               'task-4': 'Look at the windows'},
+        items={'task-1': {'content': 'Take out the garbage', 'sourceId': 'column-1'},
+               'task-2': {'content': 'Watch my favorite show', 'sourceId': 'column-1'},
+               'task-3': {'content': 'Charge my phone', 'sourceId': 'column-1'},
+               'task-4': {'content': 'Look at the windows'}},
         columns={'column-1': {'itemIds': ['task-1', 'task-2'], 'direction': 'horizontal'},
-                 'column-2': {'title': 'To Do', 'itemIds': ['task-3', 'task-4'], 'searchable': True}
-                 },
+                 'column-2': {'title': 'To Do', 'itemIds': ['task-3', 'task-4'], 'searchable': True}},
     columnOrder=['column-1', 'column-2'],
     showHandle=True,
     # handleText='\u2630',

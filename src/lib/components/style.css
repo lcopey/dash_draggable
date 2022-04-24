@@ -13,6 +13,9 @@
     display: flex;
     width: fit-content;
 }
+.w-button {
+    padding-right: 12px;
+}
 
 .is-dragging {
     background-color: whitesmoke;
@@ -29,6 +32,7 @@
 .column-title {
     padding: 8px;
 }
+
 .search-input {
     width: fit-content;
 }
@@ -50,4 +54,34 @@
 .vertical {
     display: flex;
     flex-direction: column;
+}
+
+.close-button {
+    width: 1em;
+    height: 1em;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    right: -4px;
+    top: 6px;
+}
+
+.svg-close-button {
+    width: 24px;
+    height: 24px;
+}
+
+.svg-close-button circle {
+    fill: red;
+    filter: drop-shadow(1px 1px 1px rgba(62, 62, 62, 0.955));
+}
+
+.close-button:hover .svg-close-button circle {
+    fill: rgb(209, 0, 0);
+    /* filter: drop-shadow(1px 1px 1px rgba(62, 62, 62, 0.955)); */
+}
+
+.close-button:active .svg-close-button circle {
+    fill: rgb(160, 0, 0);
+    filter: drop-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.846));
 }
